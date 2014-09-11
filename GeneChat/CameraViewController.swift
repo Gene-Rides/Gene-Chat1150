@@ -214,8 +214,13 @@ class CameraViewController : UIViewController, DBRestClientDelegate {
         println ("File upload failed with error: \(error)")
     }
     
+    // Social Media Sharing segment - get a shaarable link from DropBox
+    
     func restClient(restClient: DBRestClient!, loadedSharableLink link: String!, forFile path: String!) {
          println ("sharable link: \(link)")
+        
+        // Send it to Twitter if it is working
+        
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
             var tweetSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
             tweetSheet.setInitialText("GeneChat is awesome! \(link)")
