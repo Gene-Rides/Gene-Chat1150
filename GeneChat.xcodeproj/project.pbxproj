@@ -16,6 +16,7 @@
 		55B8A9FC19C1081C00A03817 /* GreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8A9FB19C1081C00A03817 /* GreenViewController.swift */; };
 		55B8A9FE19C1086100A03817 /* BlueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8A9FD19C1086100A03817 /* BlueViewController.swift */; };
 		55B8AA0019C1E56600A03817 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8A9FF19C1E56600A03817 /* CameraViewController.swift */; };
+		55B8AA0219C2207400A03817 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B8AA0119C2207400A03817 /* DropboxSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		55B8A9FB19C1081C00A03817 /* GreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenViewController.swift; sourceTree = "<group>"; };
 		55B8A9FD19C1086100A03817 /* BlueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueViewController.swift; sourceTree = "<group>"; };
 		55B8A9FF19C1E56600A03817 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		55B8AA0119C2207400A03817 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropboxSDK.framework; path = GeneChat/Framework/DropboxSDK.framework; sourceTree = "<group>"; };
+		55B8AA0319C221AB00A03817 /* GeneChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeneChat-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55B8AA0219C2207400A03817 /* DropboxSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +69,7 @@
 		55B8A9CB19C0FADC00A03817 = {
 			isa = PBXGroup;
 			children = (
+				55B8AA0119C2207400A03817 /* DropboxSDK.framework */,
 				55B8A9D619C0FADC00A03817 /* GeneChat */,
 				55B8A9EC19C0FADC00A03817 /* GeneChatTests */,
 				55B8A9D519C0FADC00A03817 /* Products */,
@@ -100,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				55B8A9D819C0FADC00A03817 /* Info.plist */,
+				55B8AA0319C221AB00A03817 /* GeneChat-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -340,11 +346,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GeneChat/Framework",
+				);
 				INFOPLIST_FILE = GeneChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GeneChat/GeneChat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -352,11 +365,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GeneChat/Framework",
+				);
 				INFOPLIST_FILE = GeneChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GeneChat/GeneChat-Bridging-Header.h";
 			};
 			name = Release;
 		};

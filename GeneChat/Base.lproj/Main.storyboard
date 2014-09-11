@@ -48,6 +48,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ScQ-Ys-aNe">
+                                <rect key="frame" x="126" y="467" width="67" height="34"/>
+                                <state key="normal" title="Button" image="cam-photo-btn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePhoto:" destination="w0T-PJ-7Dy" eventType="touchUpInside" id="Pj0-el-GHt"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxY-2q-inY">
                                 <rect key="frame" x="120" y="40" width="80" height="25"/>
                                 <state key="normal" image="Rotate">
@@ -91,6 +100,7 @@
     </scenes>
     <resources>
         <image name="Rotate" width="25" height="25"/>
+        <image name="cam-photo-btn" width="67" height="67"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -8,8 +8,9 @@
 
 import UIKit
 import AVFoundation
+import Social
 
-class CameraViewController : UIViewController {
+class CameraViewController : UIViewController, DBRestClientDelegate {
     
     @IBOutlet weak var cameraView: UIView!
     
@@ -29,9 +30,12 @@ class CameraViewController : UIViewController {
     
     private var previewLayer : AVCaptureVideoPreviewLayer?
     
+    private var dbRestClient : DBRestClient?
+    
     
     func findCamera(position: AVCaptureDevicePosition) -> Bool {
         let devices = AVCaptureDevice.devicesWithMediaType (AVMediaTypeVideo)
+        
         
         //get device at the matching position
         
@@ -47,6 +51,15 @@ class CameraViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !DBSession.sharedSession().isLinked() {
+            
+            DBSession.sharedSession().linkFromController(self)
+        }
+        
+        if dbRestClient == nil {
+            dbRestClient = DBRestClient(session: DBSession.sharedSession())
+            dbRestClient!.delegate = self
+        }
         
         
         captureSession.sessionPreset = AVCaptureSessionPresetPhoto
@@ -126,8 +139,136 @@ class CameraViewController : UIViewController {
     
     
     
+    @IBAction func takePhoto(sender: AnyObject) {
+        
+        //1: Grab the image output
+        if let stillOutput = self.stillImageOutput {
+            
+            //we do this on another thread so we don't hang the UI
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                
+                // Find the video connction
+                var videoConnection : AVCaptureConnection?
+                for connection in stillOutput.connections {
+                    //find a matching input port
+                    for port in connection.inputPorts!
+                    {
+                        // and matching tpe
+                        if port.mediaType == AVMediaTypeVideo {
+                            videoConnection = connection as? AVCaptureConnection
+                            break //for port
+                        }
+                    }
+                    if videoConnection != nil{
+                        break //for connection
+                    }
+                }
+                if videoConnection != nil {
+                    // Found the video connection
+                    stillOutput.captureStillImageAsynchronouslyFromConnection(videoConnection) {
+                        (imageSampleBuffer:CMSampleBuffer!, _) in
+                        
+                        let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
+                        
+                        self.didTakePhoto(imageData)
+                        
+                    }
+                }
+            }
+            
+            
+        }
+    }
     
+    func didTakePhoto(imageData: NSData){
+        
+        
+        // if you want to show a thumbnail in the UI:
+        let image = UIImage(data: imageData)
+        
+        let smallImage = compressImage(image)
+        
+        // IF YOU WANT TO SAVE THE IMAGE TO A FILE ..
+        var formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd-hh-mm-ss"
+        let prefix: String = formatter.stringFromDate(NSDate())
+        let fileName = "\(prefix).jpg"
+        
+        let tmpDirectory = NSTemporaryDirectory()
+        let snapFileName = tmpDirectory.stringByAppendingPathComponent(fileName)
+        
+        smallImage.writeToFile(snapFileName, atomically: true)
+        
+        // Upload to DropBox
+        dbRestClient!.uploadFile(fileName, toPath: "/", withParentRev: nil, fromPath: snapFileName)
+        
+
+        
+    }
+    func restClient(client: DBRestClient!, uploadedFile destPath: String!, from srcPath: String!, metadata: DBMetadata!) {
+        println ("File uploaded successfully to path : \(metadata.path)")
+        dbRestClient!.loadSharableLinkForFile(metadata.path, shortUrl: true)
+    }
     
+    func restClient(client: DBRestClient!, movePathFailedWithError error: NSError!) {
+        println ("File upload failed with error: \(error)")
+    }
     
+    func restClient(restClient: DBRestClient!, loadedSharableLink link: String!, forFile path: String!) {
+         println ("sharable link: \(link)")
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+            var tweetSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            tweetSheet.setInitialText("GeneChat is awesome! \(link)")
+            self.presentViewController(tweetSheet, animated: true, completion: nil)
+        }
+    }
+    func restClient(restClient: DBRestClient!, loadSharableLinkFailedWithError error: NSError!) {
+        println("Could not get shareable link")
+    }
     
+    func compressImage(image:UIImage) -> NSData {
+        // Drops from 2MB -> 64 KB!!!
+        
+        var actualHeight : CGFloat = image.size.height
+        var actualWidth : CGFloat = image.size.width
+        var maxHeight : CGFloat = 1136.0
+        var maxWidth : CGFloat = 640.0
+        var imgRatio : CGFloat = actualWidth/actualHeight
+        var maxRatio : CGFloat = maxWidth/maxHeight
+        var compressionQuality : CGFloat = 0.5
+        
+        if (actualHeight > maxHeight || actualWidth > maxWidth){
+            if(imgRatio < maxRatio){
+                //adjust width according to maxHeight
+                imgRatio = maxHeight / actualHeight;
+                actualWidth = imgRatio * actualWidth;
+                actualHeight = maxHeight;
+            }
+            else if(imgRatio > maxRatio){
+                //adjust height according to maxWidth
+                imgRatio = maxWidth / actualWidth;
+                actualHeight = imgRatio * actualHeight;
+                actualWidth = maxWidth;
+            }
+            else{
+                actualHeight = maxHeight;
+                actualWidth = maxWidth;
+            }
+        }
+        
+        var rect = CGRectMake(0.0, 0.0, actualWidth, actualHeight);
+        UIGraphicsBeginImageContext(rect.size);
+        image.drawInRect(rect)
+        var img = UIGraphicsGetImageFromCurrentImageContext();
+        let imageData = UIImageJPEGRepresentation(img, compressionQuality);
+        UIGraphicsEndImageContext();
+        
+        return imageData;
+    }
 }
+
+
+
+
+
+
