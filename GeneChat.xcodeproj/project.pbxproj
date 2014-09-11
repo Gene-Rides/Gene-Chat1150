@@ -16,6 +16,7 @@
 		55B8A9FA19C107A100A03817 /* RedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8A9F919C107A100A03817 /* RedViewController.swift */; };
 		55B8A9FC19C1081C00A03817 /* GreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8A9FB19C1081C00A03817 /* GreenViewController.swift */; };
 		55B8A9FE19C1086100A03817 /* BlueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8A9FD19C1086100A03817 /* BlueViewController.swift */; };
+		55B8AA0019C1E56600A03817 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8A9FF19C1E56600A03817 /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		55B8A9F919C107A100A03817 /* RedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedViewController.swift; sourceTree = "<group>"; };
 		55B8A9FB19C1081C00A03817 /* GreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenViewController.swift; sourceTree = "<group>"; };
 		55B8A9FD19C1086100A03817 /* BlueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueViewController.swift; sourceTree = "<group>"; };
+		55B8A9FF19C1E56600A03817 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				55B8A9F919C107A100A03817 /* RedViewController.swift */,
 				55B8A9FD19C1086100A03817 /* BlueViewController.swift */,
 				55B8A9FB19C1081C00A03817 /* GreenViewController.swift */,
+				55B8A9FF19C1E56600A03817 /* CameraViewController.swift */,
 				55B8A9E019C0FADC00A03817 /* Images.xcassets */,
 				55B8A9E219C0FADC00A03817 /* LaunchScreen.xib */,
 				55B8A9D719C0FADC00A03817 /* Supporting Files */,
@@ -226,6 +229,7 @@
 				55B8A9FA19C107A100A03817 /* RedViewController.swift in Sources */,
 				55B8A9FE19C1086100A03817 /* BlueViewController.swift in Sources */,
 				55B8A9DA19C0FADC00A03817 /* AppDelegate.swift in Sources */,
+				55B8AA0019C1E56600A03817 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

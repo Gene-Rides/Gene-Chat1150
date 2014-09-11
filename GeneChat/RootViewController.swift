@@ -11,7 +11,7 @@ import UIKit
 class RootViewController: UIPageViewController, UIPageViewControllerDataSource {
     
     var redViewController : RedViewController!
-    var greenViewController : GreenViewController!
+    var cameraViewController : CameraViewController!
     var blueViewController : BlueViewController!
     
 
@@ -24,15 +24,15 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource {
             self.storyboard?.instantiateViewControllerWithIdentifier("redViewController") as? RedViewController
         self.redViewController.title = "Red"
         
-        self.greenViewController =
-            self.storyboard?.instantiateViewControllerWithIdentifier("greenViewController") as? GreenViewController
-        self.greenViewController.title = "Verde"
+        self.cameraViewController =
+            self.storyboard?.instantiateViewControllerWithIdentifier("cameraViewController") as? CameraViewController
+        self.cameraViewController.title = "Camera"
         
         self.blueViewController =
             self.storyboard?.instantiateViewControllerWithIdentifier("blueViewController") as? BlueViewController
         self.blueViewController.title = "Azul"
         
-        var startingViewControllers : NSArray = [self.greenViewController]
+        var startingViewControllers : NSArray = [self.cameraViewController]
     
         self.setViewControllers(startingViewControllers, direction: .Forward, animated: false, completion: nil)
         
@@ -45,10 +45,10 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource {
         switch viewController.title! {
         case "Red":
             return nil
-        case "Verde":
+        case "Camera":
             return redViewController
         case "Azul":
-            return greenViewController
+            return cameraViewController
         default:
             return nil
             
@@ -61,8 +61,8 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource {
 //        println(viewController.title!)
         switch viewController.title! {
         case "Red":
-            return greenViewController
-        case "Verde":
+            return cameraViewController
+        case "Camera":
             return blueViewController
         case "Azul":
             return nil
