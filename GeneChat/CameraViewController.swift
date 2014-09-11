@@ -47,20 +47,20 @@ class CameraViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-    
+        
+        
         captureSession.sessionPreset = AVCaptureSessionPresetPhoto
-            if findCamera(cameraPosition) {
-                beginSession()
-        //Start the session
-            } else {
-        //show sad error message
-}
+        if findCamera(cameraPosition) {
+            beginSession()
+            //Start the session
+        } else {
+            //show sad error message
+        }
     }
     
     
     // fincd camera function
-
+    
     // Start the Capture Session
     func beginSession() {
         var err: NSError? = nil
@@ -69,6 +69,7 @@ class CameraViewController : UIViewController {
         
         if err != nil {
             println("Couldn't start session: \(err?.description)")
+            return
         }
         
         
@@ -87,7 +88,7 @@ class CameraViewController : UIViewController {
             if captureSession.canAddOutput(stillImageOutput) {
                 captureSession.addOutput(stillImageOutput)
             }
-        
+            
             //Display in UI
             previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             cameraView.layer.addSublayer(previewLayer)
@@ -96,13 +97,37 @@ class CameraViewController : UIViewController {
             
             captureSession.startRunning()
             
-        
+            
         }
         
-
-}
-
-
-
-
+        
+    }
+    
+    @IBAction func flipCamera(sender: UIButton) {
+        // if a session is running, you must call this before caning
+        captureSession.beginConfiguration()
+        let currentInput = captureSession.inputs[0] as AVCaptureInput
+        
+        captureSession.removeInput(currentInput)
+        
+        cameraPosition = cameraPosition == .Back ? .Front : .Back
+        
+        
+        if findCamera(cameraPosition) {
+            beginSession()
+        } else {
+            
+        }
+        
+        captureSession.commitConfiguration()
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
 }

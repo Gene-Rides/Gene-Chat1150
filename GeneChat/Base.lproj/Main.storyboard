@@ -48,12 +48,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxY-2q-inY">
+                                <rect key="frame" x="120" y="40" width="80" height="25"/>
+                                <state key="normal" image="Rotate">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="flipCamera:" destination="w0T-PJ-7Dy" eventType="touchUpInside" id="Mbz-jd-x8O"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.4575484084" green="1" blue="0.34769040289999997" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="cameraView" destination="j7z-bl-sko" id="jvJ-Cx-k18"/>
+                        <outlet property="cameraView" destination="j7z-bl-sko" id="l3A-pZ-cSn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntd-AM-eRA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -80,6 +89,9 @@
             <point key="canvasLocation" x="-45" y="20"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Rotate" width="25" height="25"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
