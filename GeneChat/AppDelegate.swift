@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -22,6 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             root: kDBRootAppFolder)
         
         DBSession.setSharedSession(dbSession)
+        
+        // Setup Parse
+        Parse.setApplicationId("CYbndan9fHw6SuPx5wkCsN1E4xHGscpFleg8BTOd", clientKey: "TrrZw4Ph4c0GE7V0OXCwWsHHqtEmbIdJevAinav9")
+        
+        var testObject = PFObject(className: "TestObject")
+        testObject["foo"] = "bar"
+        testObject.saveInBackground()
         
         return true
     }
