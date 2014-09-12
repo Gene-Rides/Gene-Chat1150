@@ -30,7 +30,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cex-LI-tLq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1109" y="28"/>
+            <point key="canvasLocation" x="-1095" y="368"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="JNg-Gd-wBg">
@@ -75,6 +75,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntd-AM-eRA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="too-mk-24j" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-573" y="368"/>
         </scene>
@@ -95,6 +96,9 @@
                                         <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4co-n6-hbU">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="0bC-E8-eFZ" id="yxu-Vm-bqC"/>
+                                            </connections>
                                         </searchBar>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -108,7 +112,57 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PoJ-Te-W5Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-54" y="11"/>
+            <point key="canvasLocation" x="-46" y="368"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JA7-He-kOT">
+            <objects>
+                <navigationController storyboardIdentifier="SendNav" id="sK8-t3-Pmm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2XX-J6-iuV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="M1f-X7-Abf" kind="relationship" relationship="rootViewController" id="wLI-HX-uOj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jfR-EL-LKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-109" y="-387"/>
+        </scene>
+        <!--Preview View Controller-->
+        <scene sceneID="BsE-JF-45G">
+            <objects>
+                <viewController id="M1f-X7-Abf" customClass="PreviewViewController" customModule="GeneChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6VU-Gr-iSu"/>
+                        <viewControllerLayoutGuide type="bottom" id="iL6-EJ-zJv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WzP-dA-btz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tl1-84-zZm">
+                                <rect key="frame" x="0.0" y="54" width="320" height="568"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gKl-i6-flx">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="WRr-o7-Lpg">
+                            <connections>
+                                <segue destination="too-mk-24j" kind="unwind" unwindAction="rewindFromSegue:" id="55n-fZ-0ni"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="fastForward" id="j01-Al-0pk"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imagePreview" destination="tl1-84-zZm" id="3vW-eW-jtu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D6h-up-9V4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="349" y="-387"/>
         </scene>
     </scenes>
     <resources>

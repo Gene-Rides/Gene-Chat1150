@@ -23,6 +23,7 @@
 		55B8AA2B19C32D9C00A03817 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8AA2A19C32D9C00A03817 /* FriendsViewController.swift */; };
 		55B8AA2D19C330D000A03817 /* FriendShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8AA2C19C330D000A03817 /* FriendShip.swift */; };
 		55B8AA2F19C3639900A03817 /* ChatPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8AA2E19C3639900A03817 /* ChatPicture.swift */; };
+		55B8AA3119C3696300A03817 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8AA3019C3696300A03817 /* PreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		55B8AA2A19C32D9C00A03817 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsViewController.swift; path = ../FriendsViewController.swift; sourceTree = "<group>"; };
 		55B8AA2C19C330D000A03817 /* FriendShip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendShip.swift; sourceTree = "<group>"; };
 		55B8AA2E19C3639900A03817 /* ChatPicture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatPicture.swift; sourceTree = "<group>"; };
+		55B8AA3019C3696300A03817 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				55B8A9E019C0FADC00A03817 /* Images.xcassets */,
 				55B8A9D719C0FADC00A03817 /* Supporting Files */,
 				55B8AA2E19C3639900A03817 /* ChatPicture.swift */,
+				55B8AA3019C3696300A03817 /* PreviewViewController.swift */,
 			);
 			path = GeneChat;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				55B8AA2B19C32D9C00A03817 /* FriendsViewController.swift in Sources */,
 				55B8AA2919C250EF00A03817 /* ChatUser.swift in Sources */,
 				55B8A9FC19C1081C00A03817 /* GreenViewController.swift in Sources */,
+				55B8AA3119C3696300A03817 /* PreviewViewController.swift in Sources */,
 				55B8A9DC19C0FADC00A03817 /* RootViewController.swift in Sources */,
 				55B8A9FA19C107A100A03817 /* RedViewController.swift in Sources */,
 				55B8AA2D19C330D000A03817 /* FriendShip.swift in Sources */,

@@ -71,6 +71,10 @@ class CameraViewController : UIViewController, DBRestClientDelegate {
         }
     }
     
+    @IBAction func rewindFromSegue(segue:UIStoryboardSegue) {
+        println("here is a return")
+    }
+    
     
     // fincd camera function
     
@@ -180,7 +184,7 @@ class CameraViewController : UIViewController, DBRestClientDelegate {
         }
     }
     
-    func getSnaoFileName () -> (String, String) {
+    class func getSnapFileName () -> (String, String) {
         let fileName = "lastSnap.jpg"
         let tmpDirectory = NSTemporaryDirectory()
         let snapFileName = tmpDirectory.stringByAppendingPathComponent(fileName)
@@ -197,8 +201,12 @@ class CameraViewController : UIViewController, DBRestClientDelegate {
         
         
         let smallImage = compressImage(image)
-        let (__, fullFileName) = getSnaoFileName()
+        let (__, fullFileName) = CameraViewController.getSnapFileName()
         smallImage.writeToFile(fullFileName, atomically: true)
+        
+        
+        var sendNav = self.storyboard?.instantiateViewControllerWithIdentifier("SendNav") as UIViewController!
+        self.presentViewController(sendNav, animated: true, completion: nil)
         
         // IF YOU WANT TO SAVE THE IMAGE TO A FILE ..
         // var formatter = NSDateFormatter()

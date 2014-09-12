@@ -127,7 +127,6 @@ class FriendsViewController: PFQueryTableViewController, UISearchBarDelegate
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
         searchBar.text = nil
         searchText = ""
         self.loadObjects()
