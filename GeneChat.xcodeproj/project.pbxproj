@@ -20,6 +20,8 @@
 		55B8AA2619C2477600A03817 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B8AA2419C2477600A03817 /* Bolts.framework */; };
 		55B8AA2719C2477600A03817 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B8AA2519C2477600A03817 /* Parse.framework */; };
 		55B8AA2919C250EF00A03817 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8AA2819C250EF00A03817 /* ChatUser.swift */; };
+		55B8AA2B19C32D9C00A03817 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8AA2A19C32D9C00A03817 /* FriendsViewController.swift */; };
+		55B8AA2D19C330D000A03817 /* FriendShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8AA2C19C330D000A03817 /* FriendShip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		55B8AA2419C2477600A03817 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = GeneChat/Framework/Bolts.framework; sourceTree = "<group>"; };
 		55B8AA2519C2477600A03817 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = GeneChat/Framework/Parse.framework; sourceTree = "<group>"; };
 		55B8AA2819C250EF00A03817 /* ChatUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
+		55B8AA2A19C32D9C00A03817 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsViewController.swift; path = ../FriendsViewController.swift; sourceTree = "<group>"; };
+		55B8AA2C19C330D000A03817 /* FriendShip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendShip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,15 +103,17 @@
 			isa = PBXGroup;
 			children = (
 				55B8A9D919C0FADC00A03817 /* AppDelegate.swift */,
+				55B8AA2A19C32D9C00A03817 /* FriendsViewController.swift */,
 				55B8A9DB19C0FADC00A03817 /* RootViewController.swift */,
 				55B8A9DD19C0FADC00A03817 /* Main.storyboard */,
 				55B8A9F919C107A100A03817 /* RedViewController.swift */,
 				55B8A9FD19C1086100A03817 /* BlueViewController.swift */,
 				55B8A9FB19C1081C00A03817 /* GreenViewController.swift */,
 				55B8A9FF19C1E56600A03817 /* CameraViewController.swift */,
+				55B8AA2819C250EF00A03817 /* ChatUser.swift */,
+				55B8AA2C19C330D000A03817 /* FriendShip.swift */,
 				55B8A9E019C0FADC00A03817 /* Images.xcassets */,
 				55B8A9D719C0FADC00A03817 /* Supporting Files */,
-				55B8AA2819C250EF00A03817 /* ChatUser.swift */,
 			);
 			path = GeneChat;
 			sourceTree = "<group>";
@@ -237,10 +243,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55B8AA2B19C32D9C00A03817 /* FriendsViewController.swift in Sources */,
 				55B8AA2919C250EF00A03817 /* ChatUser.swift in Sources */,
 				55B8A9FC19C1081C00A03817 /* GreenViewController.swift in Sources */,
 				55B8A9DC19C0FADC00A03817 /* RootViewController.swift in Sources */,
 				55B8A9FA19C107A100A03817 /* RedViewController.swift in Sources */,
+				55B8AA2D19C330D000A03817 /* FriendShip.swift in Sources */,
 				55B8A9FE19C1086100A03817 /* BlueViewController.swift in Sources */,
 				55B8A9DA19C0FADC00A03817 /* AppDelegate.swift in Sources */,
 				55B8AA0019C1E56600A03817 /* CameraViewController.swift in Sources */,
@@ -444,6 +452,7 @@
 				55B8A9F519C0FADC00A03817 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55B8A9F619C0FADC00A03817 /* Build configuration list for PBXNativeTarget "GeneChatTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +461,7 @@
 				55B8A9F819C0FADC00A03817 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

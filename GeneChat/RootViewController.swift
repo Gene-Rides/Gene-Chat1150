@@ -13,7 +13,7 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource ,
     
     var redViewController : RedViewController!
     var cameraViewController : CameraViewController!
-    var blueViewController : BlueViewController!
+    var friendsViewController : FriendsViewController!
     
     
     override func viewDidLoad() {
@@ -29,9 +29,9 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource ,
             self.storyboard?.instantiateViewControllerWithIdentifier("cameraViewController") as? CameraViewController
         self.cameraViewController.title = "Camera"
         
-        self.blueViewController =
-            self.storyboard?.instantiateViewControllerWithIdentifier("blueViewController") as? BlueViewController
-        self.blueViewController.title = "Azul"
+        self.friendsViewController =
+            self.storyboard?.instantiateViewControllerWithIdentifier("friendsViewController") as? FriendsViewController
+        self.friendsViewController.title = "Friends"
         
         var startingViewControllers : NSArray = [self.cameraViewController]
         
@@ -55,7 +55,7 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource ,
             return nil
         case "Camera":
             return redViewController
-        case "Azul":
+        case "Friends":
             return cameraViewController
         default:
             return nil
@@ -71,8 +71,8 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource ,
         case "Red":
             return cameraViewController
         case "Camera":
-            return blueViewController
-        case "Azul":
+            return friendsViewController
+        case "Friends":
             return nil
         default:
             return nil
@@ -104,6 +104,7 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource ,
                     | PFSignUpFields.Additional
                     | PFSignUpFields.SignUpButton
                     | PFSignUpFields.DismissButton
+                signUpViewController.delegate = self
                 
                 // 5: Customize the signup logo
                 signUpViewController.signUpView.logo = UIImageView(image: logo)
@@ -195,6 +196,16 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource ,
         
         return infoComplete
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
