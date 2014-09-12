@@ -180,27 +180,39 @@ class CameraViewController : UIViewController, DBRestClientDelegate {
         }
     }
     
+    func getSnaoFileName () -> (String, String) {
+        let fileName = "lastSnap.jpg"
+        let tmpDirectory = NSTemporaryDirectory()
+        let snapFileName = tmpDirectory.stringByAppendingPathComponent(fileName)
+        
+        return (fileName, snapFileName)
+        
+    }
+    
     func didTakePhoto(imageData: NSData){
         
         
         // if you want to show a thumbnail in the UI:
         let image = UIImage(data: imageData)
         
+        
         let smallImage = compressImage(image)
+        let (__, fullFileName) = getSnaoFileName()
+        smallImage.writeToFile(fullFileName, atomically: true)
         
         // IF YOU WANT TO SAVE THE IMAGE TO A FILE ..
-        var formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd-hh-mm-ss"
-        let prefix: String = formatter.stringFromDate(NSDate())
-        let fileName = "\(prefix).jpg"
+        // var formatter = NSDateFormatter()
+        //formatter.dateFormat = "yyyy-MM-dd-hh-mm-ss"
+        //let prefix: String = formatter.stringFromDate(NSDate())
+        //let fileName = "\(prefix).jpg"
         
-        let tmpDirectory = NSTemporaryDirectory()
-        let snapFileName = tmpDirectory.stringByAppendingPathComponent(fileName)
+        //let tmpDirectory = NSTemporaryDirectory()
+        //let snapFileName = tmpDirectory.stringByAppendingPathComponent(fileName)
         
-        smallImage.writeToFile(snapFileName, atomically: true)
+        //smallImage.writeToFile(snapFileName, atomically: true)
         
         // Upload to DropBox
-        dbRestClient!.uploadFile(fileName, toPath: "/", withParentRev: nil, fromPath: snapFileName)
+        // dbRestClient!.uploadFile(fileName, toPath: "/", withParentRev: nil, fromPath: snapFileName)
         
 
         
