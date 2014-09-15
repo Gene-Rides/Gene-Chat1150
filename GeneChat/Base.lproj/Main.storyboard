@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ovv-JL-MBc">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -103,12 +102,47 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" id="JI6-fo-tRZ" customClass="FriendCell" customModule="GeneChat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JI6-fo-tRZ" id="xo7-Lf-2Ln">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checkbox_unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="fQc-Vk-3Hv">
+                                            <rect key="frame" x="288" y="10" width="24" height="24"/>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Rn-OG-9BO">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <state key="normal">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="checkBoxTapped:" destination="JI6-fo-tRZ" eventType="touchUpInside" id="hX3-Sa-v4a"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="checkBox" destination="fQc-Vk-3Hv" id="fHR-1e-IAQ"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="0bC-E8-eFZ" id="7ro-db-Ilp"/>
                             <outlet property="delegate" destination="0bC-E8-eFZ" id="DHM-ez-pHv"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Gi0-A8-btX">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ige-hY-mPH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="glo-vf-9a1">
+                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PoJ-Te-W5Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -154,7 +188,11 @@
                                 <segue destination="too-mk-24j" kind="unwind" unwindAction="rewindFromSegue:" id="55n-fZ-0ni"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="fastForward" id="j01-Al-0pk"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="fastForward" id="j01-Al-0pk">
+                            <connections>
+                                <segue destination="0bC-E8-eFZ" kind="push" id="Wct-yl-lXN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imagePreview" destination="tl1-84-zZm" id="3vW-eW-jtu"/>
@@ -168,6 +206,7 @@
     <resources>
         <image name="Rotate" width="25" height="25"/>
         <image name="cam-photo-btn" width="67" height="67"/>
+        <image name="checkbox_unchecked" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

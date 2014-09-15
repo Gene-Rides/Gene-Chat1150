@@ -28,5 +28,6 @@ class FriendShip: PFObject, PFSubclassing {
             set { setObject(newValue, forKey: "theFriend")}
     }
     
+    var selected = false
     
 }

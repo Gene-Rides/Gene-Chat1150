@@ -18,4 +18,12 @@ class PreviewViewController: UIViewController
                 let (__, fullFileName) = CameraViewController.getSnapFileName()
         imagePreview.image = UIImage(contentsOfFile: fullFileName)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.destinationViewController is FriendsViewController {
+            var friendsVC = segue.destinationViewController as FriendsViewController
+            friendsVC.selectFriendMode = true
+            
+        }
+    }
 }
